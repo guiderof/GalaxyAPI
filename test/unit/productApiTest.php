@@ -1,7 +1,8 @@
 <?php
+require_once(dirname(__FILE__) . '/../../model/productList.php');
+
 class productListTest extends PHPUnit_Framework_TestCase
 {
-    // ...
     public $productList;
 
     public function setUp() {
@@ -12,6 +13,4 @@ class productListTest extends PHPUnit_Framework_TestCase
         // Assert
         $this->assertEquals(1, count($this->$productList->getProductsList()));
     }
-
-    // ...
 }
