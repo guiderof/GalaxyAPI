@@ -9,8 +9,7 @@ class productListTest extends PHPUnit_Framework_TestCase
         $this->$productList = new productsList;
     }
 
-    public function test_get_products_list() {
-        // Assert
-        $this->assertEquals(1, count($this->$productList->getProductsList()));
+    public function test_get_found_products() {
+        $this->assertNotEmpty($this->$productList->getProductsList());
     }
 }
