@@ -1,11 +1,11 @@
 <?php
 class product {
-    public sku;
-    public name;
-    public price;
-    public specialPrice;
-    public description;
-    public image;
-    public order;
+    public $SKU;
+    public $ProductName;
+    public $SpecialPrice;
+    public $Price;
+    public $Description;
+    public $Image;
+    public $Order;
 }
 ?>

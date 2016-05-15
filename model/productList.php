@@ -1,5 +1,7 @@
 <?php
-class productList {
+require_once 'product.php';
+class productList extends product {
+
   public function getAll() {
     $servername = "readygalaxy.hopto.org";
     $username = "readygalaxy";
@@ -8,6 +10,7 @@ class productList {
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
+    mysqli_set_charset($conn,"utf8");
     // Check connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
@@ -17,9 +20,20 @@ class productList {
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         // output data of each row
+        $productArray = array();
         while($row = $result->fetch_assoc()) {
-            echo "id: " . $row['SKU'];
+            $product = new product();
+            $product->SKU = $row['SKU'];
+            $product->ProductName = $row['ProductName'];
+            $product->SpecialPrice = $row['SpecialPrice'];
+            $product->Price = $row['Price'];
+            $product->Description = $row['Description'];
+            $product->Image = $row['Image'];
+            $product->Order = $row['Order'];
+            $productArray[] = $product;
         }
+        header('Content-Type: application/json;charset=utf-8');
+        echo json_encode($productArray);
     } else {
         echo "0 results";
     }
