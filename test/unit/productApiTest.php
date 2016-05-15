@@ -10,6 +10,6 @@ class productListTest extends PHPUnit_Framework_TestCase
     }
 
     public function test_get_found_products() {
-        $this->assertNotEmpty($this->$productList->getProductsList());
+        $this->assertNotEmpty($this->$productList->getAll());
     }
 }
